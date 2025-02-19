@@ -21,3 +21,5 @@ jobs:
           cloud-tenant: ${{ secrets.SAFEDEP_CLOUD_TENANT_DOMAIN }}
           upload-sarif: false
           add-step-summary: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
