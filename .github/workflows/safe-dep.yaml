@@ -3,28 +3,26 @@ name: Run SafeDep
 on:
   workflow_dispatch: {} # allows manual trigger
 
-permissions:
-  contents: write
-  pull-requests: write
-  id-token: write
-
 jobs:
-  safe-dep:
+  build:
     name: 'Scan for malicious packages'
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: write
+      pull-requests: write
+      id-token: write
     steps:
       - uses: actions/checkout@v4
 
-     - name: Run vet
-       id: vet
-       permissions:
-         contents: read
-         issues: write
-         pull-requests: write
-       uses: safedep/vet-action@v1
-       env:
-         cloud: true
-         cloud-key: ${{ secrets.SAFEDEP_CLOUD_API_KEY }}
-         cloud-tenant: ${{ secrets.SAFEDEP_CLOUD_TENANT_DOMAIN }}
+      - name: Run vet
+        id: vet
+        permissions:
+          contents: read
+          issues: write
+          pull-requests: write
+        uses: safedep/vet-action@v1
+        env:
+          cloud: true
+          cloud-key: ${{ secrets.SAFEDEP_CLOUD_API_KEY }}
+          cloud-tenant: ${{ secrets.SAFEDEP_CLOUD_TENANT_DOMAIN }}
   
