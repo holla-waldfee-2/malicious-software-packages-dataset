@@ -15,8 +15,9 @@ jobs:
       - name: Run vet
         id: vet
         uses: safedep/vet-action@v1
-        env:
+        with:
           cloud: true
           cloud-key: ${{ secrets.SAFEDEP_CLOUD_API_KEY }}
           cloud-tenant: ${{ secrets.SAFEDEP_CLOUD_TENANT_DOMAIN }}
-  
+          upload-sarif: false
+          add-step-summary: false
