@@ -1,4 +1,4 @@
-name: Synchronize malicious packages
+name: Run SafeDep
 
 on:
   workflow_dispatch: {} # allows manual trigger
